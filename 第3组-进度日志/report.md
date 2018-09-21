@@ -13,7 +13,7 @@ Spark is a general-purpose data processing engine that is suitable for use in a 
 
 1. Introduction
 2. xxx
-3. xxx
+3. Architecture
 
 
 # Introdction
@@ -24,3 +24,22 @@ By introducing the concept of RDDs(Resilient Distributed Datasets), Spark provid
 
 After evaluating RDDs and Spark through both microbenchmarks and measurements of user applications, we find that Spark is up to 20× faster than **Hadoop** for iterative applications, speeds up a real-world data analytics report by 40×, and can be used interactively to scan a 1 TB dataset with 5–7s latency.
 
+
+# Architecture
+
+## High-level View
+
+![high-level-view](assets/high-level-view.png)
+
+The high-level view is visualized in figure above.
+
+Looking from upper level, every **Spark** application initiate a variety of parallel operations in cluster from a **driver program**. Program driver access Spark through a **SparkContext** object. This object represents a connection to the entire cluster. By default, a SparkContext object named `sc` will be created by shell automatically.
+
+~~~python
+>>> lines = sc.textFile("README.md")
+>>> lines.count()
+~~~
+
+User can define RDDs through program driver and then initiate an operation. A simple example is presented above.
+
+As soon as the driver program receive an operation, it will try to distribute the operation over all working nodes. Each working nodes will do a part of jobs and send result back to driver program.
