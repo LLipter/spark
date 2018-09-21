@@ -43,3 +43,7 @@ Looking from upper level, every **Spark** application initiate a variety of para
 User can define RDDs through program driver and then initiate an operation. A simple example is presented above.
 
 As soon as the driver program receive an operation, it will try to distribute the operation over all working nodes. Each working nodes will do a part of jobs and send result back to driver program.
+
+
+## xxx view 
+## xxx view
