@@ -1,6 +1,6 @@
 # Apache Spark™ - Unified Analytics Engine for Big Data
 
-
+<center>![spark-logo](assets/spark-logo-trademark.png)</center>
 
 
 # Abstract
