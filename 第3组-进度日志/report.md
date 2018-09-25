@@ -12,8 +12,12 @@ Spark is a general-purpose data processing engine that is suitable for use in a 
 # Table of Contents
 
 1. Introduction
-2. xxx
-3. Architecture
+2. Context view
+3. Deployment view
+4. Architecture(Development view)
+5. Evolution view
+6. Summary
+7. References
 
 
 # Introdction
@@ -45,5 +49,24 @@ User can define RDDs through program driver and then initiate an operation. A si
 As soon as the driver program receive an operation, it will try to distribute the operation over all working nodes. Each working nodes will do a part of jobs and send result back to driver program.
 
 
-## xxx view 
+## Component view 
+
+![component-view](assets/component-view.png)
+
+The Component view is showed in the picture above.
+
+Spark contains several components ,including Spark Core, Spark SQL, Spark Streaming, MLlib, GraphX and Cluster Manager. These components are closely related to each other, which means if we update one component, others can also be affected. By using this theory, Spark has had lots of advantages. And now, we'll introduce these components and show the relations among them.
+
+### Spark Core
+
+### Spark SQL
+
+### Spark Streaming
+
+### Spark MLlib
+
+### Spark GraphX
+
+### Cluster Manager
+
 ## xxx view
