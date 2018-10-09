@@ -76,3 +76,22 @@ GraphX is a library for manipulating graphs that can perform parallel graph calc
 Spark can efficiently scale calculations from one compute node to thousands of compute nodes.
 
 ## Evolution view
+
+### Four deployment methods
+->standalone
+  With full service, it can be deployed in a single cluster without relying on any other resource management system. To a certain extent, this model is the basis of the other two methods.
+  
+->Spark on YARN
+  YARN is a new Hadoop resource manager, it is a universal resource management system.It includes two main parts:AM(Application Manager),RM(Resource Manager).
+  Base on YARN, we can divide the tasks into parts and run on many servers.
+
+->Spark on Mesos
+  Mesos is an open source distributed resource management framework under Apache. It is called the kernel of distributed systems.
+  Many company are using this method.
+  The running process above mesos:
+  1) Submit the task to spark-mesos-dispatcher via spark-submit
+  2) spark-mesos-dispatcher submits to mesos master via driver and receives task ID
+  3) mesos master is assigned to the slave to let it perform the task
+  4) spark-mesos-dispatcher, query task status by task ID
+->locol Spark
+  Spark can be run on a local machine, including local model and local cluster model(Simulated distributed environment).
