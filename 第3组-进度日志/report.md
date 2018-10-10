@@ -62,16 +62,22 @@ The Component view is showed in the picture above.
 Spark contains several components ,including Spark Core, Spark SQL, Spark Streaming, MLlib, GraphX and Cluster Manager. These components are closely related to each other, which means if we update one component, others can also be affected. By using this theory, Spark has had lots of advantages. And now, we'll introduce these components and show the relations among them.
 
 ### Spark Core
+Spark Core implements the basic functions of Spark, including task scheduling, memory management, error recovery, and storage systems. It also defines an API for RDD(resilient distribute dataset).
 
 ### Spark SQL
+Spark SQL is a package that Spark uses to manipulate structured data. With Spark SQL, we can use SQL Or the Apache Hive version of the SQL(HQL) to query data. Spark SQL supports multiple data sources, Such as Hive table, Parquet and JSON.
 
 ### Spark Streaming
+Spark Streaming is a component of Spark that provides streaming computing for real-time data. Spark Streaming provides an API for manipulating data streams and is highly responsive to the RDD API in Spark Core.
 
 ### Spark MLlib
+Spark also includes a library that provides machine learning (ML) features called MLlib. MLlib provides a variety of machine learning algorithms, including classification, regression, clustering, collaborative filtering, etc.
 
 ### Spark GraphX
+GraphX is a library for manipulating graphs that can perform parallel graph calculations.
 
 ### Cluster Manager
+Spark can efficiently scale calculations from one compute node to thousands of compute nodes.
 
 ## Evolution perspective
 
