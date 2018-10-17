@@ -64,6 +64,35 @@ Based on the above analysis, the Spark scenario is summarized as follows:
 
 
 ## 1.5 Technical Platform
+There are some main deployment methods:
+1.5.1 Standalone
+Use the resource scheduling framework that comes with spark: (not dependent on other distributed management platforms)
+![standalone-view](assets/standalone.png)
+Steps:
+1. SparkContext connects to the Master, registers with the Master and applies for resources (CPU Core and Memory)
+2. Master gets the resources on the Worker, then starts StandaloneExecutorBackend;
+3. StandaloneExecutorBackend registers with SparkContext;
+4. SparkContext sends the Applicaiton code to StandaloneExecutorBackend;
+5. SparkContext parses the Applicaiton code, builds the DAG map, submits it to the DAG Scheduler and decomposes it into a Stage, and then submits it to the Task Scheduler in a Stage (or called TaskSet). 
+6. The Task Scheduler is responsible for assigning the Task to The corresponding Worker is finally submitted to StandaloneExecutorBackend for execution;
+7. StandaloneExecutorBackend will create an Executor thread pool, start executing the Task, and report to the SparkContext until the Task is completed.
+8. After all Tasks are completed, SparkContext logs out to the Master and releases the resources.
+
+1.5.2 Spark on Mesos
+Mesos is an open source distributed resource management framework under Apache. It is called the kernel of distributed systems.
+Spark is used to support multi-server simultaneous operations in the running of mesos.
+Steps:
+1. Submit the task to spark-mesos-dispatcher via spark-submit
+2. spark-mesos-dispatcher submits to mesos master via driver and receives task ID
+3. mesos master is assigned to the slave to let it perform the task
+4. spark-mesos-dispatcher, query task status by task ID
+
+1.5.3 Spark on YARN
+Apache Hadoop YARN (Yet Another Resource Negotiator, another resource coordinator) is a new Hadoop resource manager, which is a universal resource management system.
+It includes two main part:RM,AM
+RM(Resource Manager):It allocates the required resource of the process. It acts as a JobTracker. It faces to the whole system;
+AM(Application Manager):It manages and consoles the status and data of the process. It acts as a TaskTracker. It faces to every single process.
+![yarn-veiw](assets/yarn.png)
 
 ## 1.6 Installing Spark Standalone to a Cluster
 
