@@ -43,7 +43,7 @@ Spark currently supports authentication via a shared secret. Authentication can 
 - For Spark on YARN deployments, configuring `spark.authenticate` to true will automatically handle generating and distributing the shared secret. Each application will use a unique shared secret.
 - For other types of Spark deployments, the Spark parameter `spark.authenticate.secret` should be configured on each of the nodes. This secret will be used by all the Master/Workers and applications.
 
-##1.4 Applicable scenario
+## 1.4 Applicable scenario
 
 At present, big data processing scenarios have the following types:
 
@@ -64,7 +64,7 @@ Based on the above analysis, the Spark scenario is summarized as follows:
 - The statistical analysis whose amount of data is not particularly large, but requires real-time 
 
 ## 1.5 Technical Platform
-###1.5.1 Running Environment
+### 1.5.1 Running Environment
 - Spark is created by Scala, it could run on JVM so we need Java7 or higher edition.
 - If we use Python API, we need Python2.6+ or Python3.4+.
 - Edition mapping:
@@ -126,7 +126,7 @@ AM(Application Manager):It manages and consoles the status and data of the proce
 
 +#2.stakeholders
 
-##2.1 Major contributors
+## 2.1 Major contributors
 the major contrubitors who developed spark
 are:
 
@@ -149,7 +149,7 @@ And the companies below majorly contributed spark
 - Databricks
 - Yahoo
 - Intel
-##2.2 Customers and Users detail
+## 2.2 Customers and Users detail
 - Currently, more than 30+ company 100+ developers are submitting code
 
 - Cloudera, one of Hadoop's largest vendors, claims to be investing more in the Spark framework to replace Mapreduce
@@ -216,8 +216,8 @@ Spark can efficiently scale calculations from one compute node to thousands of c
 - In Septemeber 2014, Spark1.1.0 was released
 - In December 2014, Spark1.2.0 was released
 
-###changes required
+### changes required
 
 #### core
 
-####IDE
+#### IDE
