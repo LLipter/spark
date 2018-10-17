@@ -21,7 +21,7 @@ Spark is a general-purpose data processing engine that is suitable for use in a 
 8. References
 
 
-# 1.Overview
+# 1 Overview
 
 ## 1.1 Introduction
 
@@ -159,7 +159,7 @@ RM(Resource Manager):It allocates the required resource of the process. It acts 
 AM(Application Manager):It manages and consoles the status and data of the process. It acts as a TaskTracker. It faces to every single process.
 ![yarn-veiw](assets/yarn.png)
 
-# 5. Architecture
+# 5 Architecture
 
 ## High-level View
 
@@ -205,7 +205,7 @@ GraphX is a library for manipulating graphs that can perform parallel graph calc
 ### Cluster Manager
 Spark can efficiently scale calculations from one compute node to thousands of compute nodes.
 
-# 6.Evolution perspective
+# 6 Evolution perspective
 
 ## 6.1 spark's history  
 
