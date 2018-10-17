@@ -12,12 +12,13 @@ Spark is a general-purpose data processing engine that is suitable for use in a 
 # Table of Contents
 
 1. Overview
-2. Context view
-3. Deployment view
-4. Architecture(Development view)
-5. Evolution perspective
-6. Summary
-7. References
+2. stakeholders
+3. Context view
+4. Deployment view
+5. Architecture(Development view)
+6. Evolution perspective
+7. Summary
+8. References
 
 
 # 1.Overview
@@ -64,8 +65,12 @@ Based on the above analysis, the Spark scenario is summarized as follows:
 
 
 ## 1.5 Technical Platform
+- scale programming language
+- JVM
+
+##1.6 Deployment methods
 There are some main deployment methods:
-1.5.1 Standalone
+###1.6.1 Standalone
 Use the resource scheduling framework that comes with spark: (not dependent on other distributed management platforms)
 ![standalone-view](assets/standalone.png)
 Steps:
@@ -78,7 +83,7 @@ Steps:
 7. StandaloneExecutorBackend will create an Executor thread pool, start executing the Task, and report to the SparkContext until the Task is completed.
 8. After all Tasks are completed, SparkContext logs out to the Master and releases the resources.
 
-1.5.2 Spark on Mesos
+###1.6.2 Spark on Mesos
 Mesos is an open source distributed resource management framework under Apache. It is called the kernel of distributed systems.
 Spark is used to support multi-server simultaneous operations in the running of mesos.
 Steps:
@@ -87,14 +92,14 @@ Steps:
 3. mesos master is assigned to the slave to let it perform the task
 4. spark-mesos-dispatcher, query task status by task ID
 
-1.5.3 Spark on YARN
+###1.5.3 Spark on YARN
 Apache Hadoop YARN (Yet Another Resource Negotiator, another resource coordinator) is a new Hadoop resource manager, which is a universal resource management system.
 It includes two main part:RM,AM
 RM(Resource Manager):It allocates the required resource of the process. It acts as a JobTracker. It faces to the whole system;
 AM(Application Manager):It manages and consoles the status and data of the process. It acts as a TaskTracker. It faces to every single process.
 ![yarn-veiw](assets/yarn.png)
 
-## 1.6 Installing Spark Standalone to a Cluster
+## 1.7 Installing Spark Standalone to a Cluster
 
 To install Spark Standalone mode, you simply place a compiled version of Spark on each node on the cluster. You can obtain pre-built versions of Spark with each release or [build it yourself](http://spark.apache.org/docs/latest/building-spark.html).
 
@@ -112,6 +117,40 @@ Similarly, you can start one or more workers and connect them to the master via:
 
 Once you have started a worker, look at the master’s web UI (http://localhost:8080 by default). You should see the new node listed there, along with its number of CPUs and memory (minus one gigabyte left for the OS).
 
+
+#2.stakeholders
+
+##2.1 Major contributors
+the major contrubitors who developed spark
+are:
+
+- Reynold Xin
+- Matei Zaharia
+- Michael Armbrust
+- Wenchen Fan
+- Patrick Wendell
+- Josh Rosen
+- Tathagata Das
+- Cheng Lian
+
+![contributors](assets/contributors1.png)
+
+![contributors](assets/contributors2.png)
+
+And the companies below majorly contributed spark
+
+- University of California, Berkeley
+- Databricks
+- Yahoo
+- Intel
+##2.2 Customers and Users detail
+- Currently, more than 30+ company 100+ developers are submitting code
+
+- Cloudera, one of Hadoop's largest vendors, claims to be investing more in the Spark framework to replace Mapreduce
+- Hortonworks
+- MapR, a Hadoop manufacturer, has launched the Spark camp
+- Apache Mahout abandons MapReduce and USES Spark as the computing platform for subsequent operators
+- Hortonworks，Tecent，Yahoo，Alibaba，Youku and more company at home and abroad are using spark to replace the old framework to improve efficiency.
 # Architecture
 
 ## High-level View
@@ -158,9 +197,17 @@ GraphX is a library for manipulating graphs that can perform parallel graph calc
 ### Cluster Manager
 Spark can efficiently scale calculations from one compute node to thousands of compute nodes.
 
-## Evolution perspective
+# 6. Evolution perspective
+## 6.1 spark's history  
 
-### history
+- In 2009, Berkeley's AMPLab started writing the original source code.
+- In 2010, Open source 
+- In 2011,AMLab started developing more advanced compoments, such as *Spark Streaming* and *Shark(Hive on Spark)*
+- In June 2013, entered the Apache incubator project
+- In February 2014, became the top project of Apache (8 months).
+- In late May 2014, Spark1.0.0 was released
+- In Septemeber 2014, Spark1.1.0 was released
+- In December 2014, Spark1.2.0 was released
 
 ###changes required
 
