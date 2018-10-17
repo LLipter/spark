@@ -187,23 +187,29 @@ The Component view is showed in the picture above.
 
 Spark contains several components ,including Spark Core, Spark SQL, Spark Streaming, MLlib, GraphX and Cluster Manager. These components are closely related to each other, which means if we update one component, others can also be affected. By using this theory, Spark has had lots of advantages. And now, we'll introduce these components and show the relations among them.
 
-### Spark Core
+1.Spark Core
 Spark Core implements the basic functions of Spark, including task scheduling, memory management, error recovery, and storage systems. It also defines an API for RDD(resilient distribute dataset).
 
-### Spark SQL
+2.Spark SQL
 Spark SQL is a package that Spark uses to manipulate structured data. With Spark SQL, we can use SQL Or the Apache Hive version of the SQL(HQL) to query data. Spark SQL supports multiple data sources, Such as Hive table, Parquet and JSON.
 
-### Spark Streaming
+3.Spark Streaming
 Spark Streaming is a component of Spark that provides streaming computing for real-time data. Spark Streaming provides an API for manipulating data streams and is highly responsive to the RDD API in Spark Core.
 
-### Spark MLlib
+4.Spark MLlib
 Spark also includes a library that provides machine learning (ML) features called MLlib. MLlib provides a variety of machine learning algorithms, including classification, regression, clustering, collaborative filtering, etc.
 
-### Spark GraphX
+5.Spark GraphX
 GraphX is a library for manipulating graphs that can perform parallel graph calculations.
 
-### Cluster Manager
+6.Cluster Manager
 Spark can efficiently scale calculations from one compute node to thousands of compute nodes.
+
+### Layer Structure
+
+![Layer-Structure](assets/layer-structure.png)
+
+The Components we list above are organized in a Layer Structure. Spark Core is the basic layer which can create RDD and basic function to support the upper layer. Spark SQL, Spark Streaming, MLlib and GraphX consist the second layer, which implements most of the function of Spark. The top layer is a Cluster Master which can organize the task created by users. By using this structure, Spark is easy to learn and use. What's more, it can be deployed in different platforms and work efficiently.   
 
 # 6 Evolution perspective
 
