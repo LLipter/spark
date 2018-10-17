@@ -12,12 +12,13 @@ Spark is a general-purpose data processing engine that is suitable for use in a 
 # Table of Contents
 
 1. Overview
-2. Context view
-3. Deployment view
-4. Architecture(Development view)
-5. Evolution perspective
-6. Summary
-7. References
+2. stakeholders
+3. Context view
+4. Deployment view
+5. Architecture(Development view)
+6. Evolution perspective
+7. Summary
+8. References
 
 
 # 1.Overview
@@ -64,11 +65,11 @@ Based on the above analysis, the Spark scenario is summarized as follows:
 
 ## 1.5 Technical Platform
 ###1.5.1 Running Environment
-Spark is created by Scala, it could run on JVM so we need Java7 or higher edition.
-If we use Python API, we need Python2.6+ or Python3.4+.
-Edition mapping:
-Spark1.6.2--Scala2.10
-Spark2.0.0--Scala2.11
+- Spark is created by Scala, it could run on JVM so we need Java7 or higher edition.
+- If we use Python API, we need Python2.6+ or Python3.4+.
+- Edition mapping:
+Spark1.6.2--Scala2.10;
+Spark2.0.0--Scala2.11;
 
 
 ## 1.6 Installing Spark Standalone to a Cluster
@@ -91,9 +92,9 @@ Once you have started a worker, look at the master’s web UI (http://localhost:
 
 # 3. DeploymentView
 
-## 3.1deployment methods:
+## 3.1 Deployment methods:
 
-###3.1.1 Standalone
+### 3.1.1 Standalone
 Use the resource scheduling framework that comes with spark: (not dependent on other distributed management platforms)
 ![standalone-view](assets/standalone.png)
 Steps:
@@ -123,6 +124,39 @@ RM(Resource Manager):It allocates the required resource of the process. It acts 
 AM(Application Manager):It manages and consoles the status and data of the process. It acts as a TaskTracker. It faces to every single process.
 ![yarn-veiw](assets/yarn.png)
 
++#2.stakeholders
+
+##2.1 Major contributors
+the major contrubitors who developed spark
+are:
+
+- Reynold Xin
+- Matei Zaharia
+- Michael Armbrust
+- Wenchen Fan
+- Patrick Wendell
+- Josh Rosen
+- Tathagata Das
+- Cheng Lian
+
+![contributors](assets/contributors1.png)
+
+![contributors](assets/contributors2.png)
+
+And the companies below majorly contributed spark
+
+- University of California, Berkeley
+- Databricks
+- Yahoo
+- Intel
+##2.2 Customers and Users detail
+- Currently, more than 30+ company 100+ developers are submitting code
+
+- Cloudera, one of Hadoop's largest vendors, claims to be investing more in the Spark framework to replace Mapreduce
+- Hortonworks
+- MapR, a Hadoop manufacturer, has launched the Spark camp
+- Apache Mahout abandons MapReduce and USES Spark as the computing platform for subsequent operators
+- Hortonworks，Tecent，Yahoo，Alibaba，Youku and more company at home and abroad are using spark to replace the old framework to improve efficiency.
 # 4. Architecture
 
 ## High-level View
@@ -169,9 +203,18 @@ GraphX is a library for manipulating graphs that can perform parallel graph calc
 ### Cluster Manager
 Spark can efficiently scale calculations from one compute node to thousands of compute nodes.
 
-## Evolution perspective
+# 6.Evolution perspective
 
-### history
+## 6.1 spark's history  
+
+- In 2009, Berkeley's AMPLab started writing the original source code.
+- In 2010, Open source 
+- In 2011,AMLab started developing more advanced compoments, such as *Spark Streaming* and *Shark(Hive on Spark)*
+- In June 2013, entered the Apache incubator project
+- In February 2014, became the top project of Apache (8 months).
+- In late May 2014, Spark1.0.0 was released
+- In Septemeber 2014, Spark1.1.0 was released
+- In December 2014, Spark1.2.0 was released
 
 ###changes required
 
