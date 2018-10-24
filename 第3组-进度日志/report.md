@@ -215,14 +215,79 @@ The Components we list above are organized in a Layer Structure. Spark Core is t
 
 ## 6.1 spark's history  
 
-- In 2009, Berkeley's AMPLab started writing the original source code.
-- In 2010, Open source 
-- In 2011,AMLab started developing more advanced compoments, such as *Spark Streaming* and *Shark(Hive on Spark)*
-- In June 2013, entered the Apache incubator project
-- In February 2014, became the top project of Apache (8 months).
-- In late May 2014, Spark1.0.0 was released
-- In Septemeber 2014, Spark1.1.0 was released
-- In December 2014, Spark1.2.0 was released
+- 2018-02-28，Spark 2.3.0发布
+ - 这也是 2.x 系列中的第四个版本。此版本增加了对 Structured Streaming 中的 Continuous Processing 以及全新的 Kubernetes Scheduler 后端的支持。其他主要更新包括新的 DataSource 和 Structured Streaming v2 API，以及一些 PySpark 性能增强。此外，此版本继续针对项目的可用性、稳定性进行改进，并持续润色代码。
+ - 具体参见：
+		- Apache Spark 2.3.0 正式发布
+		- Apache Spark 2.3.0 重要特性介绍
+- 2017-12-01，Spark 2.2.1发布
+- 2017-10-09，Spark 2.1.2发布
+- 2017-07-11，Spark 2.2.0发布
+	- 这也是 2.x 系列的第三个版本。此版本移除了 Structured Streaming 的实验标记（experimental tag），意味着已可以放心在线上使用。
+	- 该版本的主要更新内容主要针对的是系统的可用性、稳定性以及代码润色。包括：
+		- Core 和 Spark SQL 的 API 升级和性能、稳定性改进，比如支持从 Hive metastore 2.0/2.1 中读取数据；支持解析多行的 JSON 或 CSV 文件；移除对 Java 7 的支持；移除对 Hadoop 2.5 及更早版本的支持 等
+		- SparkR 针对现有的 Spark SQL 功能添加了更广泛的支持，比如 Structured Streaming 为 R 语言提供的 API ；R 语言支持完整的 Catalog API ；R 语言支持 DataFrame checkpointing 等
+	- 具体参见：
+		- Apache Spark 2.2.0 正式发布
+		- Apache Spark 2.2.0 新特性详细介绍
+- 2017-05-02，Spark 2.1.1发布
+- 2016-12-28，Spark 2.1.0发布
+	- 这是 2.x 版本线的第二个发行版。此发行版在为Structured Streaming进入生产环境做出了重大突破，Structured Streaming现在支持了event time watermarks了，并且支持Kafka 0.10。此外，此版本更侧重于可用性，稳定性和优雅(polish)，并解决了1200多个tickets。
+- 2016-11-24，Spark 2.0.2发布
+- 2016-11-07，Spark 1.6.3发布
+- 2016-10-03，Spark 2.0.1发布
+- 2016-07-26，Spark 2.0.0发布
+	- 该版本主要更新APIs，支持SQL 2003，支持R UDF ，增强其性能。300个开发者贡献了2500补丁程序。
+- 2016-06-25，Spark 1.6.2发布
+- 2016-03-09，Spark 1.6.1发布
+- 2016-01-04，Spark 1.6.0发布
+	- 该版本含了超过1000个patches，在这里主要展示三个方面的主题：新的Dataset API，性能提升(读取Parquet 50%的性能提升，自动内存管理，streaming state management十倍的性能提升），以及大量新的机器学习和统计分析算法。
+	- 在Spark1.3.0引入DataFrame，它可以提供high-level functions让Spark更好的处理数据结构和计算。这让Catalyst optimizer 和Tungsten execution engine自动加速大数据分析。发布DataFrame之后开发者收到了很多反馈，其中一个主要的是大家反映缺乏编译时类型安全。为了解决这个问题，Spark采用新的Dataset API (DataFrame API的类型扩展)。Dataset API扩展DataFrame API支持静态类型和运行已经存在的Scala或Java语言的用户自定义函数。对比传统的RDD API，Dataset API提供更好的内存管理，特别是在长任务中有更好的性能提升。
+- 2015-11-02，Spark 1.5.2发布
+- 2015-10-06，Spark 1.5.1发布
+- 2015-09-09，Spark 1.5.0发布
+	- Spark 1.5.0是1.x线上的第6个发行版。这个版本共处理了来自230+contributors和80+机构的1400+个patches。
+	- Spark 1.5的许多改变都是围绕在提升Spark的性能、可用性以及操作稳定性。
+	- Spark 1.5.0焦点在Tungsten项目，它主要是通过对低层次的组建进行优化从而提升Spark的性能。
+	- Spark 1.5版本为Streaming增加了operational特性，比如支持backpressure。另外比较重要的更新就是新增加了一些机器学习算法和工具，并扩展了Spark R的相关API。
+- 2015-07-15，Spark 1.4.1发布
+	- DataFrame API及Streaming，Python，SQL和MLlib的bug修复
+- 2015-06-11，Spark 1.4.0发布
+	- 该版本将 R API 引入 Spark，同时提升了 Spark 的核心引擎和 MLlib ，以及 Spark Streaming 的可用性。
+- 2015-03-13，Spark 1.3.0发布
+	- 该版本发布的最大亮点是新引入的DataFrame API，对于结构型的DataSet，它提供了更方便更强大的操作运算。除了DataFrame之外，还值得关注的一点是Spark SQL成为了正式版本，这意味着它将更加的稳定，更加的全面。
+- 2015-02-09，Spark 1.2.1发布
+	- Spark核心API及Streaming，Python，SQL，GraphX和MLlib的bug修复
+- 2014-12-18，Spark 1.2.0发布
+- 2014-11-26，Spark 1.1.1发布
+	- Spark核心API及Streaming，Python，SQL，GraphX和MLlib的bug修复
+- 2014-09-11，Spark 1.1.0发布
+- 2014-08-05，Spark 1.0.2发布
+	- Spark核心API及Streaming，Python，MLlib的bug修复
+- 2014-07-11，Spark 1.0.1发布
+	- 增加了Spark SQL的新特性和堆JSON数据的支持等
+- 2014-05-30，Spark 1.0.0发布
+	- 增加了Spark SQL、MLlib、GraphX和Spark Streaming都增加了新特性并进行了优化。Spark核心引擎还增加了对安全YARN集群的支持
+- 2014-04-09，Spark 0.9.1发布
+	- 增加使用YARN的稳定性，改进Scala和Python API的奇偶性
+- 2014-02-02，Spark 0.9.0发布
+	- 增加了GraphX，机器学习新特性，流式计算新特性，核心引擎优化（外部聚合、加强对YARN的支持）等
+- 2013-12-19，Spark 0.8.1发布
+	- 支持Scala 2.9，YARN 2.2，Standalone部署模式下调度的高可用性，shuffle的优化等
+- 2013-09-25，Spark 0.8.0发布
+	- 一些新功能及可用性改进
+- 2013-07-16，Spark 0.7.3发布
+	- 一些bug的解决，更新Spark Streaming API等
+- 2013-06-21，Spark接受进入Apache孵化器
+- 2013-06-02，Spark 0.7.2发布
+- 2013-02-27，Spark 0.7.0发布
+	- 增加了更多关键特性，例如：Python API、Spark Streaming的alpha版本等
+- 2013-02-07，Spark 0.6.2发布
+	- 解决了一些bug，并增强了系统的可用性
+- 2012-10-15，Spark 0.6.0发布
+	- 大范围的性能改进，增加了一些新特性，并对Standalone部署模式进行了简化
+- 2010 ，Spark正式对外开源
+- 2009 ，Spark诞生于UCBerkeley的AMP实验室
 
 ### changes required
 
