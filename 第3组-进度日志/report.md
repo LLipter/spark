@@ -212,6 +212,31 @@ Spark can efficiently scale calculations from one compute node to thousands of c
 
 The Components we list above are organized in a Layer Structure. Spark Core is the basic layer which can create RDD and basic function to support the upper layer. Spark SQL, Spark Streaming, MLlib and GraphX consist the second layer, which implements most of the function of Spark. The top layer is a Cluster Master which can organize the task created by users. By using this structure, Spark is easy to learn and use. What's more, it can be deployed in different platforms and work efficiently.   
 
+## Component and Connector diagram
+
+![C&C-Structure](assets/c&c-structure.png)
+
+After the Spark cluster is deployed, you need to start the Master process and the Worker process on the master node and the slave node respectively to control the entire cluster. Driver and Worker are two important roles in the execution of a Spark application. The Driver program is the starting point for the execution of the application logic. It is responsible for the scheduling of jobs, that is, the distribution of Task tasks, and multiple Workers are used to manage computing nodes and create Executor parallel processing tasks. In the execution phase, the Driver serializes the files and jars that the Task and Task depend on and passes them to the corresponding Worker machine. At the same time, the Executor processes the tasks of the corresponding data partitions.
+
+The basic parts of Spark's architecture in the runtime:
+
+• Cluster Manager: In the standalone mode, it is the master master node, which controls the entire cluster and monitors the workers. Resource manager in YARN mode
+
+• Worker: The slave node is responsible for controlling the compute node and starting the Executor or Driver. In the YARN mode, it is the NodeManager, which is responsible for the control of the computing node.
+
+• Driver: Run the main() function of the Application and create a SparkContext.
+
+• Executor: The executor, the component that performs the task on the worker node, and the task that is used to start the thread pool. Each Application has a separate set of Executors.
+
+• SparkContext: The context of the entire application, controlling the lifecycle of the application.
+
+• RDD: The basic computing unit of Spark, a set of RDDs can form a directed acyclic graph RDD Graph.
+
+• DAG Scheduler: Build a Stage-based DAG based on the task and submit the Stage to the TaskScheduler.
+
+• TaskScheduler: Distribute tasks to Executor for execution.
+
+• SparkEnv: A thread-level context that stores references to important portions of the runtime.
 
 ## Deployment diagram
 
