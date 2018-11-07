@@ -508,7 +508,7 @@ If you also want to know more about `blockManager`, please refer to Jerry Shao's
 
 # 6 Functional View
 
-## pyspark package
+## public class in pyspark package
 
 | Class | Explanation |
 | ---| --- |
@@ -520,6 +520,14 @@ If you also want to know more about `blockManager`, please refer to Jerry Shao's
 | SparkFiles: | Access files shipped with jobs. |
 | StorageLevel: | Finer-grained cache persistence levels. |
 | TaskContext: | Information about the current running task, available on the workers and experimental. |
+
+![](assets/coreFunction.png)
+
+In the core section of Spark API, `SparkContext` serves as the main entry point for Spark functionality. A SparkContext represents the connection to a Spark cluster, and can be used to create RDD and broadcast variables on that cluster. `Broadcast`, `RDD`, `Accumulator` are variables created by `SparkContext` and can be used to represents the computation process. A broadcast variable created with SparkContext.broadcast(). Access its value through value. A `Accumulator` is a shared variable that can be accumulated, i.e., has a commutative and associative “add” operation. Worker tasks on a Spark cluster can add values to an Accumulator with the += operator, but only the driver program is allowed to access its value, using value. While SparkContext supports accumulators for primitive data types like int and float, users can also define accumulators for custom types by providing a custom AccumulatorParam object. Refer to the doctest of this module for an example. Contextual information about a task which can be read or mutated during execution. To access the TaskContext for a running task, use: TaskContext.get().
+
+
+
+
 
 ## pyspark.sql package
 
