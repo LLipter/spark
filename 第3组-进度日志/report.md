@@ -1,3 +1,7 @@
+---
+
+---
+
 # Apache Spark™ - Unified Analytics Engine for Big Data
 
 
@@ -14,28 +18,37 @@ Spark is a general-purpose data processing engine that is suitable for use in a 
 1. Overview
 2. stakeholders
 3. Deployment view
-4. Context view
-5. Architecture
-6. Functional View
-7. Evolution perspective
-8. Summary
-9. References
+4. Architecture
+5. Functional View
+6. Evolution perspective
+7. Summary
+8. References
 
 
 # 1 Overview
 
 ## 1.1 Introduction
 
-Apache Spark is a fast and general-purpose cluster computing system. It provides high-level APIs in Java, Scala, Python and R, and an optimized engine that supports general execution graphs. It also supports a rich set of higher-level tools including Spark SQL for SQL and structured data processing, MLlib for machine learning, GraphX for graph processing, and Spark Streaming.
+**Apache Spark** is an open-source distributed general-purpose cluster-computing framework. Originally developed at the University of California, Berkeley's AMP Lab（AMP：Algorithms，Machines，People）, the Spark codebase was later donated to the Apache Software Foundation, which has maintained it since. Spark provides an interface for programming entire clusters with implicit data parallelism and fault tolerance. In 2009, was born at the university of California, Berkeley, AMP Lab, it was originally belongs to the research project at the university of Berkeley, in 2010 officially open source, and to the Apache foundation project is established in 2013, by 2014 will become the top for the Apache foundation project, the project the whole development course just over six years, but its development speed is very alarming.
+
+Apache Spark has as its architectural foundation the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way.In Spark 1.x, the RDD was the primary application programming interface (API), but as of Spark 2.x use of the Dataset API is encouraged even though the RDD API is not deprecated.
+
+Spark and its RDDs were developed in 2012 in response to limitations in the MapReduce cluster computing paradigm, which forces a particular linear dataflow structure on distributed programs: MapReduce programs read input data from disk, map a function across the data, reduce the results of the map, and store reduction results on disk. Spark's RDDs function as a working set for distributed programs that offers a (deliberately) restricted form of distributed shared memory.
+
+Spark facilitates the implementation of both iterative algorithms, that visit their data set multiple times in a loop, and interactive/exploratory data analysis, i.e.,  the repeated database-style querying of data. The latency of such applications may be reduced by several orders of magnitude compared to a MapReduce implementation (as was common in Apache Hadoop stacks). Among the class of iterative algorithms are the training algorithms for machine learning systems, which formed the initial impetus for developing Apache Spark.
+
+Apache Spark requires a cluster manager and a distributed storage system. For cluster management, Spark supports standalone (native Spark cluster), Hadoop YARN, or Apache Mesos. For distributed storage, Spark can interface with a wide variety, including Hadoop Distributed File System (HDFS), MapR File System (MapR-FS), Cassandra, OpenStack Swift, Amazon S3, Kudu, or a custom solution can be implemented. Spark also supports a pseudo-distributed local mode, usually used only for development or testing purposes, where distributed storage is not required and the local file system can be used instead; in such a scenario, Spark is run on a single machine with one executor per CPU core.
+
+Is due to the Spark from the university, its whole development process is full of academic research, academic is driving the development of the core structures of the Spark, such as elastic distributed data sets (RDD, resilient distributed datasets), flow processing (Spark streaming), and machine learning (MLlib), analysis of SQL (SQL) Spark and figure (Graph X) calculation, this section will introduce the main Spark development course and characteristics
 
 
-## 1.2 Spark DataType
+## 1.2 Spark Datatype
 
-RDD (Resilient Distributed Dataset), which is the most basic data abstraction in Spark. It represents aset that is immutable, partitioned, and whose elements can be calculated in parallel. RDD has the characteristics of data flow model: automatic fault tolerance, location-aware scheduling, and scalability. RDD allows users to explicitly cache working sets in memory while performing multiple queries, and subsequent queries can reuse working sets, which greatly increases query speed.
+RDD (Resilient Distributed Dataset), which is the most basic data abstraction in Spark. It represents a set that is immutable, partitioned, and whose elements can be calculated in parallel. RDD has the characteristics of data flow model: automatic fault tolerance, location-aware scheduling, and scalability. RDD allows users to explicitly cache working sets in memory while performing multiple queries, and subsequent queries can reuse working sets, which greatly increases query speed.
 
 By introducing the concept of RDD, Spark provides efficient big data operations without incurs substantial overheads due to data replication, disk I/O, and serialization, which can dominate application execution times. In addition, RDDs are fault-tolerant, parallel data structures that let users explicitly persist intermediate results in memory, control their partitioning to optimize data placement, and manipulate them using a rich set of operators.
 
-After evaluating RDDs and Spark through both microbenchmarks and measurements of user applications, we find that Spark is up to 20× faster than **Hadoop** for iterative applications, speeds up a real-world data analytics report by 40×, and can be used interactively to scan a 1 TB dataset with 5–7s latency.
+After evaluating RDDs and Spark through both microbenchmarks and measurements of user applications, we find that Spark is up to 20× faster than Hadoop for iterative applications, speeds up a real-world data analytics report by 40×, and can be used interactively to scan a 1 TB dataset with 5–7s latency.
 
 ## 1.3 Security
 
@@ -65,7 +78,6 @@ Based on the above analysis, the Spark scenario is summarized as follows:
 - The statistical analysis whose amount of data is not particularly large, but requires real-time 
 
 ## 1.5 Technical Platform
-### 1.5.1 Running Environment
 - Spark is created by Scala, it could run on JVM so we need Java7 or higher edition.
 - If we use Python API, we need Python2.6+ or Python3.4+.
 - Edition mapping:
@@ -91,42 +103,49 @@ Similarly, you can start one or more workers and connect them to the master via:
 
 Once you have started a worker, look at the master’s web UI (http://localhost:8080 by default). You should see the new node listed there, along with its number of CPUs and memory (minus one gigabyte left for the OS).
 
-
 # 2 stakeholders
 
-## 2.1 Major contributors
-the major contrubitors who developed spark
-are:
+## 2.1 The major contributors of Spark 
 
-- Reynold Xin
-- Matei Zaharia
-- Michael Armbrust
-- Wenchen Fan
-- Patrick Wendell
-- Josh Rosen
-- Tathagata Das
-- Cheng Lian
+​	Born out of the Berkeley lab project, the core members of the Spark project team created Databricks in 2013, and so far have hosted consecutive Spark Summit summits in San Francisco from 2013. The conference was supported by major big data manufacturers Hortonworks, IBM, Cloudera, MAPR and Pivotal, as well as the cooperation of big data solution providers Amazon, DATASTAX and SAP.
 
-![contributors](assets/contributors1.png)
+ the major member of Spark, who mostly are major member of Databricks are:
 
-![contributors](assets/contributors2.png)
+- **Matei  Zaharia **(original author)
+-  **Andy Konwinski**（ the organizer of Spark Summit）
+- **Mike Franklin**（AMP Lab director）
+- **Reynold Xin** (Spark lead architect）
+- **Patrick Wendell**（One of Spark's most important contributors）
+- **Ion Stoica**
+- **Scott Shenker** 
 
-And the companies below majorly contributed spark
+## 2.2 Development of code contributors
 
-- University of California, Berkeley
-- Databricks
-- Yahoo
-- Intel
-## 2.2 Customers and Users detail
-- Currently, more than 30+ company 100+ developers are submitting code
+ After the Spark development community was founded on GitHub and became an Apache incubator project in 2013, Spark has entered a period of rapid growth, with significant increases in both codebase submissions and community activity. In terms of activity, Spark ranks in the top three of all Apache foundation open source projects. Compared with other big data platforms or frameworks, Spark's code base is the most active, showing strong development momentum. Its development can be seen in the following figure.
 
-- Cloudera, one of Hadoop's largest vendors, claims to be investing more in the Spark framework to replace Mapreduce
-- Hortonworks
-- MapR, a Hadoop manufacturer, has launched the Spark camp
-- Apache Mahout abandons MapReduce and USES Spark as the computing platform for subsequent operators
-- Hortonworks，Tecent，Yahoo，Alibaba，Youku and more company at home and abroad are using spark to replace the old framework to improve efficiency.
+![commits](assets\commits.png)
 
-# 3 DeploymentView
+## 2.3 The major users and distributors of Spark 
+
+With the enlargement of the developer community, and constantly improve and progress of the project, the Spark of rising in influence, has been more and more users using this platform, including the traditional industrial manufacturer company of TOYOTA and famous Internet company Uber and reality, traditional Spark user fields continuously deepen to the cross area of the industry and the Internet and traditional industry. Not only that, more and more big data commercial publishers such as Cloudera and Hortonworks have also started to include Spark into their deployment range, which undoubtedly plays a huge role in Spark's commercial application and promotion, and on the other hand, shows the advanced nature of Spark platform technology.
+
+ 	Its major users and distributors  can be seen in the following figure.
+
+![stakeholders](assets\stakeholders.png)
+
+​	Nowadays, spark has also stepped into China. Tencent，Alibaba，Youku, Wandoujia and more company at home and abroad are using spark to replace the old framework to improve efficiency.
+
+
+
+## 2.4 Spark Meetup Groups
+
+​	Since pioneering the summit in 2013, Spark Summits have become the world’s largest big data event focused entirely on Apache Spark—assembling the best engineers, scientists, analysts, and executives from around the globe to share their knowledge and receive expert training on this open-source powerhouse. Also, many thousands have come to learn how Spark, big data, machine learning, data engineering, and data science are delivering new insights to businesses and institutions worldwide.
+
+​	In addition to the influential Spark Summit, the Spark community holds small meetups around the world on an irregular basis. In China, there are Meetup activities in Beijing, Shanghai and Shenzhen, which are supported by AsiaInfo, Microsoft and InfoQ. The Spark Meetup Group is already spread across North America, Europe, Asia and Oceania. The following figure shows a distribution of Spark Meetup Groups in the world.
+
+![groups](assets\groups.png)
+
+# 3 Deployment View
 
 ## 3.1 Deployment methods:
 
@@ -134,6 +153,7 @@ And the companies below majorly contributed spark
 Use the resource scheduling framework that comes with spark: (not dependent on other distributed management platforms)
 ![standalone-view](assets/standalone.png)
 Steps:
+
 1. SparkContext connects to the Master, registers with the Master and applies for resources (CPU Core and Memory)
 2. Master gets the resources on the Worker, then starts StandaloneExecutorBackend;
 3. StandaloneExecutorBackend registers with SparkContext;
@@ -160,9 +180,9 @@ RM(Resource Manager):It allocates the required resource of the process. It acts 
 AM(Application Manager):It manages and consoles the status and data of the process. It acts as a TaskTracker. It faces to every single process.
 ![yarn-veiw](assets/yarn.png)
 
-# 5 Architecture
+# 4 Architecture
 
-## High-level diagram
+## 4.1 High-level diagram
 
 ![high-level-view](assets/high-level-view.png)
 
@@ -180,7 +200,7 @@ User can define RDDs through program driver and then initiate an operation. A si
 As soon as the driver program receive an operation, it will try to distribute the operation over all working nodes. Each working nodes will do a part of jobs and send result back to driver program.
 
 
-## Component diagram 
+## 4.2 Component diagram 
 
 ![component-view](assets/component-view.png)
 
@@ -212,7 +232,7 @@ Spark can efficiently scale calculations from one compute node to thousands of c
 
 The Components we list above are organized in a Layer Structure. Spark Core is the basic layer which can create RDD and basic function to support the upper layer. Spark SQL, Spark Streaming, MLlib and GraphX consist the second layer, which implements most of the function of Spark. The top layer is a Cluster Master which can organize the task created by users. By using this structure, Spark is easy to learn and use. What's more, it can be deployed in different platforms and work efficiently.   
 
-## Component and Connector diagram
+## 4.4 Component and Connector diagram
 
 ![C&C-Structure](assets/c&c-structure.png)
 
@@ -239,7 +259,7 @@ The basic parts of Spark's architecture in the runtime:
 • SparkEnv: A thread-level context that stores references to important portions of the runtime.
 
 
-## Discussion
+## 4.5 Discussion
 
 In terms of architecture design, functionalities and modules are pretty independent. With the help of Cluster Manager, it can easily organize its job in different platforms after it is deployed. In the Deployment View, I'd like to show how exactly it organizes its resources, tasks and data.
 
@@ -248,9 +268,9 @@ If you want to know how the modules of spark system are coordinated to finish a 
 
 
 
-# 6 Functional View
+# 5 Functional View
 
-## public class in pyspark package
+## 5.1 public class in pyspark package
 
 | Class | Explanation |
 | ---| --- |
@@ -271,7 +291,7 @@ In the core section of Spark API, `SparkContext` serves as the main entry point 
 
 
 
-## pyspark.sql package
+## 5.2 pyspark.sql package
 
 | Class | Explanation |
 | ---| --- |
@@ -287,153 +307,32 @@ In the core section of Spark API, `SparkContext` serves as the main entry point 
 | pyspark.sql.Window | For working with window functions. |
 
 
-# 7 Evolution perspective
+# 6 Evolution perspective
 
-## 7.1 Overview
-The	evolution perspective deals	with concerns related to evolution during the lifetime of a system. This is relevant to Spark because it is a system where a large amount of change needs to be handled.
-Throughout	the	years,	Spark has evolved a lot. At this moment Arduino has 34 releases, which started with release Spark 0.6.0  in October 15th, 2012 and the latest release 2.3.0 in Febuary 28th, 2018. However the real first release is 0.1.0 in 2009 in UC Berkeley's Lab, but this can't be found on the Github repository anymore. This is probably because it was an alpha version and this prohiect has become open-sourced in 2010.
+## 6.1 Overview
+The	evolution perspective deals with concerns related to evolution during the lifetime of a system. This is relevant to Spark because it is a system where a large amount of change needs to be handled. Throughout	the years, Spark has evolved a lot. At this moment Arduino has 34 releases, which started with release Spark 0.6.0  in October 15th, 2012 and the latest release 2.3.0 in February 28th, 2018. However the real first release is 0.1.0 in 2009 in UC Berkeley's Lab, but this can't be found on the GitHub repository anymore. This is probably because it was an alpha version and this project has become open-sourced in 2010.
 
-In order to	understand	the	changes	in the various releases, the changelogs and release notes have been analysed.
+In order to understand the changes in the various releases, the changelogs and release notes have been analyzed.
 The	changes in spark and the conclusion we made are as below.
 
-## 7.1 spark's history  
+## 6.2 spark's history  
 
-- 2018-02-28, Spark 2.3.0 release
+Starting as an academic research project, Spark has only been a hot topic in the field of big data for about 6 years, from its inception to its popularity abroad. The detailed development details are as follows：
 
-	- this is also the fourth release in the 2.x series. This version adds support for Continuous Processing in the Structured Streaming and the new Kubernetes Scheduler backend. Other major updates include the new DataSource and the Structured Streaming v2 API, as well as some PySpark performance enhancements. In addition, this version continues to improve for project availability and stability, and continues to polish the code.
+- Spark was born in Berkeley AMP Lab in 2009.
 
-	- see details:
-	* Apache Spark 2.3.0 is officially released*,an introduction to Apache Spark 2.3.0 important features
+- The project was open source earlier in 2010, and many of the early ideas for Spark systems were published in various papers.
 
-- 2017-12-01, Spark 2.2.1 release
+- After the project was open source, the Spark development community was founded on GitHub and became an Apache incubator project in 2013.
 
-- 2017-10-09, Spark 2.1.2 released
+- The project became Apache's top project in February 2014.
 
-- 2017-07-11, Spark 2.2.0 release
+- On May 30, 2014, Spark 1.0.0 was officially launched.
 
-	- this is also the third edition of the 2.x series. This edition removes experimental tag, which means it can be used online safely.
+- By 2015, Spark's official maintenance and operations company Databricks had organized and hosted the Spark Summit technology Summit for three years.
 
-	- the major updates in this release are for system availability, stability, and code retouching. Include:
 
-	- Core and Spark SQL API upgrades and performance and stability improvements, such as support for reading data from Hive metastore 2.0/2.1; Support parsing multi-line JSON or CSV files; Remove support for Java 7; Remove support for Hadoop 2.5 and earlier
 
-	- SparkR adds broader support for existing Spark SQL features, such as the API provided by Structured Streaming for the R language; The R language supports the full Catalog API; The R language supports DataFrame checkpointing and so on
-
-
-
-- 2017-05-02, Spark 2.1.1 released
-
-- 2016-12-26,Spark 2.1.0 was released
-
-	- this is the second release of the 2.x release line. This release has made a significant breakthrough for the Structured Streaming into the production environment. Structured Streaming now supports event time watermarks and supports Kafka 0.10. In addition, this version focuses more on usability, stability and elegance (polish), and solves more than 1,200 tickets.
-
-
-- 2016-11-24,Spark 2.0.2 was released
-
-
-- 2016-11-07,Spark 1.6.3 was released
-
-- 2016-10-03, Spark 2.0.1 release
-
-- 2016-07-26, Spark 2.0.0 release
-
-	- this version mainly updates APIs, supports SQL 2003, supports R UDF, and enhances its performance. 300 developers contributed 2,500 patches.
-
-	- released by Spark 1.6.2 on June 25, 2016
-
-- 2016-03-09, Spark 1.6.1 release
-
-- 2016-01-04, Spark 1.6.0 release
-
-	- this edition contains more than 1,000 patches, and mainly presents three themes here: new Dataset API, performance improvement (50% performance improvement of reading Parquet, automatic memory management, ten times performance improvement of streaming state management), and a large number of new machine learning and statistical analysis algorithms.
-
-	- the introduction of DataFrame in Spark1.3.0, which provides high-level functions that allow Spark to better process data structures and calculations. The Catalyst optimizer and Tungsten execution engine automatic speed up big data analysis. After the release of DataFrame, developers received a lot of feedback, and one of the main points was that there was a lack of compile-time type safety. To address this, Spark has adopted a new Dataset API (DataFrame API type extension). The Dataset API extends the DataFrame API to support static types and user-defined functions that run existing Scala or Java languages. Compared to the traditional RDD API, the Dataset API provides better memory management, especially with better performance improvement in long tasks.
-
-- 2015-11-02, Spark 1.5.2 release
-- 2015-10-06, Spark 1.5.1 release
-
-- 2015-09-09, Spark 1.5.0 release
-
-	- spark 1.5.0 is the sixth release on the 1.x line. This version deals with more than 1,400 patches from 230+ exports and 80+ agencies.
-
-	- Many of the changes in -spark 1.5 revolve around improving Spark's performance, usability, and operational stability.
-
-	- Spark 1.5.0 focus on Tungsten project, it is mainly through to the lower level to form is optimized to improve the performance of the Spark.
-
-	- The spark 1.5 version adds operational features for Streaming, such as support for backpressure. Another important update is the addition of machine learning algorithms and tools, and the extension of Spark's API.
-
-- 2015-07-15, Spark 1.4.1 released
-
-	- DataFrame API and bug fixes for Streaming, Python, SQL and MLlib
-
--2015-06-11, Spark 1.4.0 release
-
-	-  this version introduces the R API to Spark, while improving Spark's core engine and MLlib, as well as Spark Streaming's availability.
-
-- 2015-03-13, Spark 1.3.0 release
-
-	- the highlight of this release is the newly introduced DataFrame API, which provides more convenient and powerful operational calculations for structured DataSet. In addition to DataFrame, there is also concern that Spark SQL has become a formal version, which means it will be more stable and more comprehensive.
-
-- 2015-02-09, Spark 1.2.1 release
-
-	- Spark core API and bug fixes for Streaming, Python, SQL, GraphX and MLlib
-
-- 2014-12-18, Spark 1.2.0 release
-
-- 2014-11-26, Spark 1.1.1 released
-
-	- Spark core API and bug fixes for Streaming, Python, SQL, GraphX and MLlib
-- 2014-09-11, Spark 1.1.0 release
-
-- 2014-08-05, Spark 1.0.2 release
-
-	- Spark core API and bug fixes for Streaming, Python, MLlib
-
-- 2014-07-11, Spark 1.0.1 release
-
-	- new features have been added to Spark SQL and support for heap JSON data
-
-- 2014-05-30, Spark 1.0.0 release
-
-	- added Spark SQL, MLlib, GraphX and Spark Streaming all add new features and are optimized. The Spark core engine also adds support for secure YARN clusters
-
-- 2014-04-09, Spark 0.9.1 release
-
-	- increase the stability of YARN and improve the parity of Scala and Python apis
-
-- 2014-02-02, Spark 0.9.0 release
-
-	- add GraphX, new features for machine learning, new features for streaming computing, core engine optimization (external aggregation, enhanced support for YARN), etc
-
-- 2013-12-19, Spark 0.8.1 released
-
-	- support Scala 2.9, YARN 2.2, independent deployment mode high availability, shuffle optimization, etc
-
--2013-09-25, Spark 0.8.0 release
-	- some new features and usability improvements
-
-- 2013-07-16, Spark 0.7.3 release
-
-	- fix some bugs, update Spark Streaming API, etc
-- 2013-06-21, Spark accepted entry into the Apache incubator
-
-- 2013-06-02, Spark 0.7.2 release
-
-- 2013-02-27, Spark 0.7.0 released
-
-	- added more key features, such as the Python API, the alpha version of Spark Streaming, etc
-
-- 2013-02-07, Spark 0.6.2 release
-
-	- fixed some bugs and improved system availability
-
-- 2012-10-15, Spark 0.6.0 release
-
-	- a wide range of performance improvements, new features, anda simplification of the Standalone deployment pattern
-
-- 2010 Spark is officially open source
-
-- in 2009, Spark was born at the AMP lab at UCBerkeley
 
 ### changes required
 
@@ -441,9 +340,10 @@ The	changes in spark and the conclusion we made are as below.
 
 #### IDE
 
-# 8.Data Reliability
+# 7.Data Reliability
 ## Driver HA
-### Since the stream computing system is long-running and data is constantly flowing in, the reliability of the Spark daemon (Driver) is crucial. It determines whether the Streaming program can run correctly.
+Since the stream computing system is long-running and data is constantly flowing in, the reliability of the Spark daemon (Driver) is crucial. It determines whether the Streaming program can run correctly.
+
 1.Persistence
 ![HA](assets/SparkStreamHA1.png)
 2.Recovery
@@ -451,15 +351,19 @@ The	changes in spark and the conclusion we made are as below.
 The solution for Driver to implement HA is to persist the metadata so that the state recovery after restart
 • Block metadata: the data received by Receiver from the network, assembled into Block metadata generated after the Block;
 • Checkpoint data: including configuration items, DStream operations, unfinished batch status, and generated RDD data;
+
 ## Reliable upstream and downstream IO system
-### Stream computing mainly implements data interaction with an external IO system through network socket communication. Due to the unreliable characteristics of network communication, the transmitting end and the receiving end need to ensure a receiving acknowledgement of the data packet and a failure retransmission mechanism through a certain protocol.
+Stream computing mainly implements data interaction with an external IO system through network socket communication. Due to the unreliable characteristics of network communication, the transmitting end and the receiving end need to ensure a receiving acknowledgement of the data packet and a failure retransmission mechanism through a certain protocol.
+
 Not all IO systems support retransmission, which requires at least a data stream to be persisted while achieving high throughput and low latency. In the data source officially supported by Spark Streaming, only Kafka can meet these requirements at the same time. Therefore, in the recent Spark Streaming release, Kafka is also regarded as the recommended external data system.
 A typical enterprise big data center data flow view is shown below
 ![IO](assets/SparkIOSystem.png)
 ## Reliable receiver
-### Prior to Spark 1.3, Spark Streaming completed the flow of data from Kafka clusters by launching a dedicated Receiver task.
+Prior to Spark 1.3, Spark Streaming completed the flow of data from Kafka clusters by launching a dedicated Receiver task.
+
 ## Write-ahead log Write Ahead Log
-### Spark 1.2 began to provide pre-write logging capabilities for persistence and failure recovery of Receiver data and Driver metadata. WAL is able to provide persistence because it uses reliable HDFS for data storage.
+Spark 1.2 began to provide pre-write logging capabilities for persistence and failure recovery of Receiver data and Driver metadata. WAL is able to provide persistence because it uses reliable HDFS for data storage.
+
 The core APIs of the Spark Streaming write-ahead logging mechanism include:
 • WriteAheadLogManager that manages WAL files
 • Read/write WAL's WriteAheadLogWriter and WriteAheadLogReader
