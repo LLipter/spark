@@ -287,6 +287,10 @@ If you want to know how the modules of spark system are coordinated to finish a 
 In the core section of Spark API, `SparkContext` serves as the main entry point for Spark functionality. A SparkContext represents the connection to a Spark cluster, and can be used to create RDD and broadcast variables on that cluster. `Broadcast`, `RDD`, `Accumulator` are variables created by `SparkContext` and can be used to represents the computation process. A broadcast variable created with SparkContext.broadcast(). Access its value through value. A `Accumulator` is a shared variable that can be accumulated, i.e., has a commutative and associative “add” operation. Worker tasks on a Spark cluster can add values to an Accumulator with the += operator, but only the driver program is allowed to access its value, using value. While SparkContext supports accumulators for primitive data types like int and float, users can also define accumulators for custom types by providing a custom AccumulatorParam object. Refer to the doctest of this module for an example. Contextual information about a task which can be read or mutated during execution. To access the TaskContext for a running task, use: TaskContext.get().
 
 
+
+
+
+
 # 6 Evolution perspective
 
 ## 6.1 Overview
@@ -300,25 +304,105 @@ The	changes in spark and the conclusion we made are as below.
 Starting as an academic research project, Spark has only been a hot topic in the field of big data for about 6 years, from its inception to its popularity abroad. The detailed development details are as follows：
 
 - Spark was born in Berkeley AMP Lab in 2009.
-
 - The project was open source earlier in 2010, and many of the early ideas for Spark systems were published in various papers.
-
 - After the project was open source, the Spark development community was founded on GitHub and became an Apache incubator project in 2013.
-
 - The project became Apache's top project in February 2014.
-
 - On May 30, 2014, Spark 1.0.0 was officially launched.
-
 - By 2015, Spark's official maintenance and operations company Databricks had organized and hosted the Spark Summit technology Summit for three years.
 
+The figure below shows the timeline of the important  improvement in spark's development.
+
+![history](assets\history.png)
+
+### 6.2.1 Spark Component history
+
+The formal component of spark's current ecosystem took place when spark1.0 was released. It is shown in the figure below. 
+
+![spark component](assets\sparkstack ep.png)
+
+In spark's 1.0.x versions, the developer had been trying to update these components and fix bugs. Until the end of 2016, all the component had tend to be impeccable.
+
+### 6.2.2 Spark core API history
+
+- Spark's first generation API: RDD
+
+  **Five core features of RDD:**
+
+  - A list of partition
+  - A function for computing each split
+  - A list of dependencies on other RDDs
+  - Optionally, a Practitioner for key - value RDDs (e.g. To say that the RDD is hash partitioned)
+  - Optionally, a list of preferred locations to compute each split on (e.g., block locations for an HDFS file)
 
 
 
-### changes required
+- Spark second generation API: Data Frame
 
-#### core
+  **Data Frame core features:**
 
-#### IDE
+    - The column containing the ROW data for each ROW, at which time the Data Frame is Table; 
+    - Tungsten: new execution engine
+    - Catalyst: new syntax parsing framework
+
+**This change improve computing efficiency, reduce data reading, and optimize underlying computing.**
+
+
+
+- Spark third generation API: Data Set
+
+  Core values and benefits of Data Set: Encoder
+
+  **Data Set core features:**
+
+  - Type safety check at compile time,
+
+  - no type mismatch is found at execution time. 
+
+  - Performance is greatly improved
+
+
+**This change greatly reduced memory usage, reduced GC;**
+
+​		      **greatly reduce the transmission of network data;**
+
+​		      **dramatically reduces the difference between using Scala and Java to code.**
+
+
+
+
+
+
+## 6.3 Spark‘s changes required
+
+Since 2014, Spark's open source ecosystem has grown significantly and has become one of the most active open source projects in the big data category. The reason why Spark has so much attention is that tableland is mainly due to Spark's features of high performance, high flexibility and perfect integration with Hadoop ecosystem.
+
+However, with so much advantages, Spark itself still has many drawbacks that need to be solved.
+
+So the Spark future the main developing direction includes the following several aspects:
+
+### Memory footprint aspect 
+
+The JVM's memory overhead is too large. A gigabyte of data usually needs to consume 5G, which greatly increases the memory consumption of computing. Also,  different Spark apps lack effective memory sharing mechanism. Spark is addressing this problem by constantly optimizing the code. 
+
+### Stability aspect
+
+Spark's long running can often go wrong due to code quality problems. On the architecture side, Spark's performance is not stable due to a large amount of data being cached in RAM and Java recycling garbage being slow. In addition, SQL performance is not even as good as existing Map/Reduce in complex scenarios.
+
+Spark is trying a number of ways to solve this problem, such as removing experimental tag;removing support for Java 7; removing support for Hadoop 2.5 and earlier
+
+
+
+### Dealing with big data
+
+spark now  unable to deal with big data, too large data can be processed by a single machine, or the intermediate results exceed the size of RAM due to data problems, often resulting in insufficient RAM space or inability to get results. However, the Map/Reduce algorithm framework can handle big data, and Spark is less effective than the Map/Reduce algorithm framework in this regard.
+
+
+
+### SQL Operations
+
+complex SQL statistics cannot be supported. At present, the complete level of SQL syntax supported by Spark cannot be applied in the analysis of complex data. In the aspect of manageability, the combination of Spark-YARN is not perfect, which leads to the hidden trouble in the use process and various puzzles.
+
+Spark now support for reading data from Hive megastore 2.0/2.1; support parsing multi-line JSON or CSV files; the API provided by Structured Streaming for the R language; The R language supports the full Catalog API; The R language supports Data Frame checkpointing and so on  to change the status quo.
 
 # 7.Quality attribute
 ## 7.1 Modifiability
