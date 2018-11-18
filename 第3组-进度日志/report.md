@@ -319,7 +319,7 @@ The figure below shows the timeline of the important  improvement in spark's dev
 
 The formal component of spark's current ecosystem took place when spark1.0 was released. It is shown in the figure below. 
 
-![spark component](assets/sparkstack ep.png)
+![spark component](assets/sparkep.png)
 
 In spark's 1.0.x versions, the developer had been trying to update these components and fix bugs. Until the end of 2016, all the component had tend to be impeccable.
 
