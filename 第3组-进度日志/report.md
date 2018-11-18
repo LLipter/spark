@@ -1,6 +1,4 @@
----
 
----
 
 # Apache Spark™ - Unified Analytics Engine for Big Data
 
@@ -15,15 +13,8 @@ Spark is a general-purpose data processing engine that is suitable for use in a 
 
 # Table of Contents
 
-1. Overview
-2. stakeholders
-3. Deployment view
-4. Architecture
-5. Functional View
-6. Evolution perspective
-7. Summary
-8. References
 
+[TOC]
 
 # 1 Overview
 
@@ -405,6 +396,8 @@ complex SQL statistics cannot be supported. At present, the complete level of SQ
 
 Spark now support for reading data from Hive megastore 2.0/2.1; support parsing multi-line JSON or CSV files; the API provided by Structured Streaming for the R language; The R language supports the full Catalog API; The R language supports Data Frame checkpointing and so on  to change the status quo.
 
+
+
 # 7.Quality attribute
 ## 7.1 Modifiability
 Spark is very easy to integrate with other open source products. For example, Spark can use Hadoop's YARN and Apache Mesos as its resource management and scheduler, and can handle all Hadoop-supported data, including HDFS, HBase, and Cassanda. This is especially important for users who have deployed a Hadoop cluster, because Spark's powerful processing power can be used without any data migration.
@@ -458,3 +451,28 @@ The core APIs of the Spark Streaming write-ahead logging mechanism include:
 • WAL-based Partition: WriteAheadLogBackedBlockRDDPartition
 
 ![WAL](assets/DataRecoveryBasedOnWAL.png)
+
+
+
+# 8. Conclusion
+
+Spark is a widely used and ever-evolving data processing engine. First born in Matei  Zaharia's paper, it has a vast community of users as well as contributors all over the world who help to make it form a project in an university lab to this popular and brilliant data processing tools.
+
+In this document, we have analyzed Spark from different viewpoints and perspectives.By analyzing its architecture through several views and perspectives, we learn that spark, due to its advanced architecture and its special resilient distributed datasets, is  efficient and easy of use. Still, Spark still need optimization to become the mainstream standard of big data processing.
+
+Although Spark is only a relatively young data project, its convenience and easy-to-use and surprisingly fast preset library and multilingual options in programming language bring it a bright future.
+
+# 9. Reference 
+
+1. Apache Spark http://spark.apache.org
+2. Apache Spark https://databricks.com/spark/about
+3.  Zaharia M , Chowdhury M , Franklin M , et al. Spark: cluster computing with working sets[C]//Usenix Conference on Hot Topics in Cloud Computing. USENIX Association, 2010.
+4. Apache/Spark on GitHub https://github.com/apache/spark
+5. Spark Summit  https://databricks.com/sparkaisummit
+6. Zaharia M, Xin R S, Wendell P, et al. Apache Spark: a unified engine for big data processing[J]. Communications of the Acm, 2016, 59(11):56-65.
+7. Spark official document http://spark.apache.org/documentation.html
+8. Spark technology community  https://spark.csdn.net/
+9.  Karau H, Konwinski A, Wendell P, et al. Learning Spark: Lightning-Fast Big Data Analytics[M]. O'Reilly Media, Inc. 2015.
+10. Karau H, Konwinski A, Wendell P, et al. Learning Spark[J]. 2015.
+11. Apache Spark™ Under the Hood  Getting started with core architecture and basic concepts https://pages.databricks.com/201805-EB-Mini-eBook-1-Under-The-Hood_landing.html
+12. 7 Steps for a Developer to Learn Apache® Spark™ https://pages.databricks.com/7-steps-for-a-developer-to-learn-apache-spark.html
