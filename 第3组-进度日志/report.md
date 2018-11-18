@@ -123,15 +123,16 @@ Once you have started a worker, look at the master’s web UI (http://localhost:
 
  After the Spark development community was founded on GitHub and became an Apache incubator project in 2013, Spark has entered a period of rapid growth, with significant increases in both codebase submissions and community activity. In terms of activity, Spark ranks in the top three of all Apache foundation open source projects. Compared with other big data platforms or frameworks, Spark's code base is the most active, showing strong development momentum. Its development can be seen in the following figure.
 
-![commits](assets\commits.png)
+![commits](assets/commits.png)
+
 
 ## 2.3 The major users and distributors of Spark 
 
 With the enlargement of the developer community, and constantly improve and progress of the project, the Spark of rising in influence, has been more and more users using this platform, including the traditional industrial manufacturer company of TOYOTA and famous Internet company Uber and reality, traditional Spark user fields continuously deepen to the cross area of the industry and the Internet and traditional industry. Not only that, more and more big data commercial publishers such as Cloudera and Hortonworks have also started to include Spark into their deployment range, which undoubtedly plays a huge role in Spark's commercial application and promotion, and on the other hand, shows the advanced nature of Spark platform technology.
 
- 	Its major users and distributors  can be seen in the following figure.
+ Its major users and distributors can be seen in the following figure.
 
-![stakeholders](assets\stakeholders.png)
+![stakeholders](assets/stakeholders.png)
 
 ​	Nowadays, spark has also stepped into China. Tencent，Alibaba，Youku, Wandoujia and more company at home and abroad are using spark to replace the old framework to improve efficiency.
 
@@ -143,7 +144,7 @@ With the enlargement of the developer community, and constantly improve and prog
 
 ​	In addition to the influential Spark Summit, the Spark community holds small meetups around the world on an irregular basis. In China, there are Meetup activities in Beijing, Shanghai and Shenzhen, which are supported by AsiaInfo, Microsoft and InfoQ. The Spark Meetup Group is already spread across North America, Europe, Asia and Oceania. The following figure shows a distribution of Spark Meetup Groups in the world.
 
-![groups](assets\groups.png)
+![groups](assets/groups.png)
 
 # 3 Deployment View
 
@@ -312,13 +313,13 @@ Starting as an academic research project, Spark has only been a hot topic in the
 
 The figure below shows the timeline of the important  improvement in spark's development.
 
-![history](assets\history.png)
+![history](assets/history.png)
 
 ### 6.2.1 Spark Component history
 
 The formal component of spark's current ecosystem took place when spark1.0 was released. It is shown in the figure below. 
 
-![spark component](assets\sparkstack ep.png)
+![spark component](assets/sparkstack ep.png)
 
 In spark's 1.0.x versions, the developer had been trying to update these components and fix bugs. Until the end of 2016, all the component had tend to be impeccable.
 
