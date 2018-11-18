@@ -338,12 +338,17 @@ Since the stream computing system is long-running and data is constantly flowing
 1.Persistence
 
 ![HA](assets/SparkStreamHA1.png)
+
 2.Recovery
 
 ![HA](assets/SparkStreamHA2.png)
+
 The solution for Driver to implement HA is to persist the metadata so that the state recovery after restart
+
 • Block metadata: the data received by Receiver from the network, assembled into Block metadata generated after the Block;
+
 • Checkpoint data: including configuration items, DStream operations, unfinished batch status, and generated RDD data;
+
 
 ### Reliable upstream and downstream IO system
 Stream computing mainly implements data interaction with an external IO system through network socket communication. Due to the unreliable characteristics of network communication, the transmitting end and the receiving end need to ensure a receiving acknowledgement of the data packet and a failure retransmission mechanism through a certain protocol.
@@ -358,8 +363,13 @@ Prior to Spark 1.3, Spark Streaming completed the flow of data from Kafka cluste
 Spark 1.2 began to provide pre-write logging capabilities for persistence and failure recovery of Receiver data and Driver metadata. WAL is able to provide persistence because it uses reliable HDFS for data storage.
 
 The core APIs of the Spark Streaming write-ahead logging mechanism include:
+
 • WriteAheadLogManager that manages WAL files
+
 • Read/write WAL's WriteAheadLogWriter and WriteAheadLogReader
+
 • WAL-based RDD: WriteAheadLogBackedBlockRDD
+
 • WAL-based Partition: WriteAheadLogBackedBlockRDDPartition
+
 ![WAL](assets/DataRecoveryBasedOnWAL.png)
