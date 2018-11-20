@@ -14,7 +14,42 @@ Spark is a general-purpose data processing engine that is suitable for use in a 
 # Table of Contents
 
 
-[TOC]
+* [Abstract](#abstract)
+* [1 Overview](#1-overview)
+  * [1\.1 Introduction](#11-introduction)
+  * [1\.2 Spark Datatype](#12-spark-datatype)
+  * [1\.3 Security](#13-security)
+  * [1\.4 Applicable scenario](#14-applicable-scenario)
+  * [1\.5 Technical Platform](#15-technical-platform)
+  * [1\.6 Installing Spark Standalone to a Cluster](#16-installing-spark-standalone-to-a-cluster)
+* [2 Stakeholders](#2-Stakeholders)
+  * [2\.1 The major contributors of Spark](#21-the-major-contributors-of-spark)
+  * [2\.2 Development of code contributors](#22-development-of-code-contributors)
+  * [2\.3 The major users and distributors of Spark](#23-the-major-users-and-distributors-of-spark)
+  * [2\.4 Spark Meetup Groups](#24-spark-meetup-groups)
+* [3 Deployment View](#3-deployment-view)
+  * [3\.1 Deployment methods:](#31-deployment-methods)
+* [4 Architecture](#4-architecture)
+  * [4\.1 High\-level diagram](#41-high-level-diagram)
+  * [4\.2 Component diagram](#42-component-diagram)
+  * [4\.3Layer Structure](#43-layer-structure)
+  * [4\.4 Component and Connector diagram](#44-component-and-connector-diagram)
+  * [4\.5 Discussion](#45-discussion)
+* [5 Functional View](#5-functional-view)
+* [6 Evolution perspective](#6-evolution-perspective)
+  * [6\.1 Overview](#61-overview)
+  * [6\.2 spark's history](#62-sparks-history)
+  * [6\.3 Spark‘s changes required](#63-sparks-changes-required)
+* [7\.Quality attribute](#7quality-attribute)
+  * [7\.1 Modifiability](#71-modifiability)
+  * [7\.2 Security](#72-security)
+  * [7\.3 Performance](#73-performance)
+  * [7\.4 Ease of use](#74-ease-of-use)
+  * [7\.5 Usability and Reliability](#75-usability-and-reliability)
+* [8\. Conclusion](#8-conclusion)
+* [9\.Tech Debt](#9tech-debt)
+* [10\. Reference](#10-reference)
+
 
 # 1 Overview
 
@@ -219,7 +254,7 @@ GraphX is a library for manipulating graphs that can perform parallel graph calc
 6.Cluster Manager:
 Spark can efficiently scale calculations from one compute node to thousands of compute nodes.
 
-### Layer Structure
+## 4.3 Layer Structure
 
 ![Layer-Structure](assets/layer-structure.png)
 
