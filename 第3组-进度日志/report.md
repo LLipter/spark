@@ -464,6 +464,8 @@ Although Spark is only a relatively young data project, its convenience and easy
 
 # 9.Tech Debt 
 
+![](assets/tech_debt.png)
+
 - Complexity: Number  of execution paths through functions or methods
 - Style:
   - Missing switch `default` clause
