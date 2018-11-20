@@ -462,7 +462,40 @@ In this document, we have analyzed Spark from different viewpoints and perspecti
 
 Although Spark is only a relatively young data project, its convenience and easy-to-use and surprisingly fast preset library and multilingual options in programming language bring it a bright future.
 
-# 9. Reference 
+# 9.Tech Debt 
+
+- Complexity: Number  of execution paths through functions or methods
+- Style:
+  - Missing switch `default` clause
+  - Unresolved warning comment
+  - Non-English character
+  - Overload methods are not grouped together
+  - Multiple statements in one line
+  - Use of empty  statement
+  - Unnecessary escape character
+- Compatibility
+  - Use of `*` hack
+  - Vendor-prefixed property without standard property
+  - Missing vendor-prefixed property
+- Performance
+  - Overqualified element
+  - Use of selector that looks like regular expression
+  - Use of units for `0` value
+  - Use of unqualified attribute selecctor
+  - Unnecessary use of `cat`
+  - Properties not combined into one
+- Maintainability
+  - Illegal token
+  - Line is too long
+  - Redefining built-in
+  - Unnecessary `else` after `return`
+- Accessibility: Inappropriate variable access
+- Security
+  - Possible SQL injection via string-based query construction
+  - Use of `eval()`
+  - Use of `exec()`
+
+# 10. Reference 
 
 1. Apache Spark http://spark.apache.org
 2. Apache Spark https://databricks.com/spark/about
