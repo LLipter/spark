@@ -131,6 +131,10 @@ Once you have started a worker, look at the master’s web UI (http://localhost:
 
 # 2 stakeholders
 
+The Apache Spark, who has been one of the most active projects on GitHub, has all kinds of helpers and users, which forms it unique open source ecosystem.
+
+![spark-environment](assets/spark-envorment.jpg)
+
 ## 2.1 The major contributors of Spark 
 
 ​	Born out of the Berkeley lab project, the core members of the Spark project team created Databricks in 2013, and so far have hosted consecutive Spark Summit summits in San Francisco from 2013. The conference was supported by major big data manufacturers Hortonworks, IBM, Cloudera, MAPR and Pivotal, as well as the cooperation of big data solution providers Amazon, DATASTAX and SAP.
@@ -343,13 +347,31 @@ The figure below shows the timeline of the important  improvement in spark's dev
 
 ### 6.2.1 Spark Component history
 
-The formal component of spark's current ecosystem took place when spark1.0 was released. It is shown in the figure below. 
+![spark-ep1](assets/sparkep1.png)
 
-![spark component](assets/sparkep.png)
+when Spark was born, the component were not fully developed, and only Spark core existed.
 
-In spark's 1.0.x versions, the developer had been trying to update these components and fix bugs. Until the end of 2016, all the component had tend to be impeccable.
+![spark-ep2](assets/sparkep2.png)
+
+Spark Streaming's alpha version was born when Spark 0.7.0 was released and had been optimized during the next few years.
+
+![spark-ep3](assets/sparkep3.png)
+
+Spark's library for manipulating graphs had been added in Spark 0.9.0 version in order to help to manipulate the graph. 
+
+ ![spark-ep4](assets/sparkep4.png)
+
+Spark's components faced  huge progress when Spark 1.0.0 been released and added the Spark SQL, which used to be Shark, and MLlib. It had not added new components and kept optimizing these new components until Spark 2.0 was released.
+
+![spark-epf](assets/sparkepf.png)
+
+Nowadays, after integrating other existing good projects and other common components and interfaces, the spark ecosystem has become sophisticated and compatible with many other current platforms.
 
 ### 6.2.2 Spark core API history
+
+The evolution of Spark core API is as follows:
+
+![api-timeline](assets/api-timeline.png)
 
 - Spark's first generation API: RDD
 
