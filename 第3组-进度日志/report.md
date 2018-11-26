@@ -467,6 +467,10 @@ Compared to Hadoop's MapReduce, Spark's memory-based computing is more than 100 
 ## 7.4 Ease of use
 Spark supports Java, Python, and Scala APIs, and supports more than 80 advanced algorithms, allowing users to quickly build different applications. And Spark supports interactive Python and Scala shells, which means that Spark clusters can be easily used in these shells to validate problem-solving methods, rather than packaging, uploading clusters, validation, etc., as before. This is very important for prototyping.
 ## 7.5 Usability and Reliability
+There is a kind of Rollback method in Spark data recovery(or process recovery)
+
+![Rollback](assets/Rollback.jpg)
+
 ### Driver HA
 Since the stream computing system is long-running and data is constantly flowing in, the reliability of the Spark daemon (Driver) is crucial. It determines whether the Streaming program can run correctly.
 
