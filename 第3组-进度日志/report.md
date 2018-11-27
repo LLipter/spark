@@ -32,7 +32,7 @@ Spark is a general-purpose data processing engine that is suitable for use in a 
 * [4 Architecture](#4-architecture)
   * [4\.1 High\-level diagram](#41-high-level-diagram)
   * [4\.2 Component diagram](#42-component-diagram)
-  * [4\.3Layer Structure](#43-layer-structure)
+  * [4\.3 Layer Structure diagram](#43-layer-structure-diagram)
   * [4\.4 Component and Connector diagram](#44-component-and-connector-diagram)
   * [4\.5 Discussion](#45-discussion)
 * [5 Functional View](#5-functional-view)
@@ -258,7 +258,7 @@ GraphX is a library for manipulating graphs that can perform parallel graph calc
 6.Cluster Manager:
 Spark can efficiently scale calculations from one compute node to thousands of compute nodes.
 
-## 4.3 Layer Structure
+## 4.3 Layer Structure diagram
 
 ![Layer-Structure](assets/layer-structure.png)
 
@@ -273,27 +273,19 @@ After the Spark cluster is deployed, you need to start the Master process and th
 The basic parts of Spark's architecture in the runtime:
 
 • Cluster Manager: In the standalone mode, it is the master node, which controls the entire cluster and monitors the workers. Resource manager in YARN mode
-
 • Worker: The slave node is responsible for controlling the compute node and starting the Executor or Driver. In the YARN mode, it is the NodeManager, which is responsible for the control of the computing node.
-
 • Driver: Run the main() function of the Application and create a SparkContext.
-
 • Executor: The executor, the component that performs the task on the worker node, and the task that is used to start the thread pool. Each Application has a separate set of Executors.
-
 • SparkContext: The context of the entire application, controlling the lifecycle of the application.
-
 • RDD: The basic computing unit of Spark, a set of RDDs can form a directed acyclic graph RDD Graph.
-
 • DAG Scheduler: Build a Stage-based DAG based on the task and submit the Stage to the TaskScheduler.
-
 • TaskScheduler: Distribute tasks to Executor for execution.
-
 • SparkEnv: A thread-level context that stores references to important portions of the runtime.
 
 
 ## 4.5 Discussion
 
-In terms of architecture design, functionalities and modules are pretty independent. With the help of Cluster Manager, it can easily organize its job in different platforms after it is deployed. In the Deployment View, I'd like to show how exactly it organizes its resources, tasks and data.
+In terms of architecture design, functionalities and modules are pretty independent. With the help of Cluster Manager, it can easily organize its job in different platforms after it is deployed. In the Deployment View, it has shown how exactly it organizes its resources, tasks and data.
 
 If you want to know how the modules of spark system are coordinated to finish a job in details (like production, submission, execution, results collection, results computation and shuffle), you can read the source code and some articles about it.
 
