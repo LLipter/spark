@@ -272,15 +272,15 @@ After the Spark cluster is deployed, you need to start the Master process and th
 
 The basic parts of Spark's architecture in the runtime:
 
-• Cluster Manager: In the standalone mode, it is the master node, which controls the entire cluster and monitors the workers. Resource manager in YARN mode
-• Worker: The slave node is responsible for controlling the compute node and starting the Executor or Driver. In the YARN mode, it is the NodeManager, which is responsible for the control of the computing node.
-• Driver: Run the main() function of the Application and create a SparkContext.
-• Executor: The executor, the component that performs the task on the worker node, and the task that is used to start the thread pool. Each Application has a separate set of Executors.
-• SparkContext: The context of the entire application, controlling the lifecycle of the application.
-• RDD: The basic computing unit of Spark, a set of RDDs can form a directed acyclic graph RDD Graph.
-• DAG Scheduler: Build a Stage-based DAG based on the task and submit the Stage to the TaskScheduler.
-• TaskScheduler: Distribute tasks to Executor for execution.
-• SparkEnv: A thread-level context that stores references to important portions of the runtime.
+1. Cluster Manager: In the standalone mode, it is the master node, which controls the entire cluster and monitors the workers. Resource manager in YARN mode
+2. Worker: The slave node is responsible for controlling the compute node and starting the Executor or Driver. In the YARN mode, it is the NodeManager, which is responsible for the control of the computing node.
+3. Driver: Run the main() function of the Application and create a SparkContext.
+4. Executor: The executor, the component that performs the task on the worker node, and the task that is used to start the thread pool. Each Application has a separate set of Executors.
+5. SparkContext: The context of the entire application, controlling the lifecycle of the application.
+6. RDD: The basic computing unit of Spark, a set of RDDs can form a directed acyclic graph RDD Graph.
+7. DAG Scheduler: Build a Stage-based DAG based on the task and submit the Stage to the TaskScheduler.
+8. TaskScheduler: Distribute tasks to Executor for execution.
+9. SparkEnv: A thread-level context that stores references to important portions of the runtime.
 
 
 ## 4.5 Discussion
