@@ -40,7 +40,7 @@ Spark is a general-purpose data processing engine that is suitable for use in a 
   * [6\.1 Overview](#61-overview)
   * [6\.2 spark's history](#62-sparks-history)
   * [6\.3 Spark‘s changes required](#63-sparks-changes-required)
-* [7\.Quality attribute](#7quality-attribute)
+* [7\.Quality attribute](#7-quality-attribute)
   * [7\.1 Modifiability](#71-modifiability)
   * [7\.2 Security](#72-security)
   * [7\.3 Performance](#73-performance)
@@ -447,11 +447,12 @@ Spark now support for reading data from Hive megastore 2.0/2.1; support parsing 
 
 
 
-# 7.Quality attribute
+# 7 Quality attribute
 ## 7.1 Modifiability
 Spark is very easy to integrate with other open source products. For example, Spark can use Hadoop's YARN and Apache Mesos as its resource management and scheduler, and can handle all Hadoop-supported data, including HDFS, HBase, and Cassanda. This is especially important for users who have deployed a Hadoop cluster, because Spark's powerful processing power can be used without any data migration.
 Spark can also rely on third-party resource managers and schedulers. It implements Standalone as its built-in resource manager and scheduling framework, which further reduces the usage threshold of Spark, making it easy for everyone to deploy and use Spark. 
 In addition, Spark also provides tools for deploying Standalone's Spark cluster on EC2.
+
 ## 7.2 Security
 We have mentioned this in part 1.3
 ## 7.3 Performance
